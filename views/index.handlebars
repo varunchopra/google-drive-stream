@@ -1,0 +1,81 @@
+<div id="video"></div>
+<script type="application/javascript">
+$(function() {
+  var token = '{{token}}';
+  var fileId = '{{fileId}}';
+
+  var w_height = $(window).height();
+  var w_width = $(window).width();
+
+  $.ajax({
+    type: 'GET',
+    url: '/api?' + $.param({
+      token: token,
+      f: fileId
+    }),
+    success: function(response) {
+      var sources = [];
+      var streamMap = response.streamMap;
+
+      $.each(streamMap, function(key, url) {
+        let label;
+        switch (parseInt(key)) {
+          case 18:
+          label = '360p'
+          break;
+          case 59:
+          label = '480p'
+          break;
+          case 22:
+          label = '720p'
+          break;
+          case 37:
+          label = '1080p'
+          break;
+          default:
+          label = null;
+          break;
+        }
+
+        if (label) {
+          sources.push({
+            file: '/video.mp4?' + $.param({
+              url: url,
+              token: token
+            }),
+            label: label
+          });
+        }
+
+        sources.sort(function(item1, item2) {
+          var a = parseInt(item1.label);
+          var b = parseInt(item2.label);
+
+          return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+        });
+
+        jwplayer("video").setup({
+          "height": w_height,
+          "width": w_width,
+          "image": '/c/' + fileId + '/' + token,
+          skin: {
+            name: 'kunkka',
+            url: '//solovm.com/static/skins/kunkka.css'
+          },
+
+          sources: sources
+        });
+      });
+    },
+    error: function(error) {
+      $('#loading').heml('Error!');
+      console.log(error)
+    }
+  });
+  $(window).resize(function(e) {
+    var new_w_height = $(window).height();
+    var new_w_width = $(window).width();
+    jwplayer("video").resize(new_w_width, new_w_height);
+  });
+});
+</script>

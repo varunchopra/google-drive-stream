@@ -1,0 +1,24 @@
+{
+  "name": "video-stream-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.11",
+    "helmet": "^3.9.0",
+    "multiple-needles-indexof": "^1.1.0",
+    "mysql2": "^1.5.1",
+    "nightmare": "^2.10.0",
+    "request": "^2.83.0",
+    "sequelize": "^4.27.0",
+    "vo": "^4.0.2"
+  },
+  "pkg": {
+    "config": "config/config",
+    "core": "core" 
+  }
+}

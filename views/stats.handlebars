@@ -1,0 +1,40 @@
+<h4>Stats:</h4>
+
+<style>
+    table {
+        border: 1px solid #000000;
+        border-collapse: collapse;
+    }
+
+    table td {
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+</style>
+
+<table>
+    <thead>
+    <tr>
+        <td>Period</td>
+        <td>Total requests</td>
+        <td>From cache</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Day</td>
+        <td>{{stats.day.all}}</td>
+        <td>{{stats.day.cache}}</td>
+    </tr>
+    <tr>
+        <td>Month</td>
+        <td>{{stats.month.all }}</td>
+        <td>{{stats.month.cache}}</td>
+    </tr>
+    <tr>
+        <td>All time</td>
+        <td>{{stats.all.all }}</td>
+        <td>{{stats.all.cache}}</td>
+    </tr>
+    </tbody>
+</table>
