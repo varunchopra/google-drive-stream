@@ -1,6 +1,6 @@
 # video-stream-api
 
-video-stream-api is an app utilising Express.js and Nightmare.js to fetch videos from Google Drive and serve them over an Express web server.
+video-stream-api is an app utilising Nightmare.js to fetch videos from Google Drive and serve them over an Express web server.
 
 ## Configuration
 
